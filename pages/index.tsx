@@ -21,33 +21,6 @@ const StyledContainer = styled.div`
 `;
 
 const Index = () => (
-  <StyledContainer>
-    <div>
-      <h1>Notes App</h1>
-    </div>
-    <div>
-      <Button primary>Primary</Button>
-      <Button secondary>Secondary</Button>
-    </div>
-    <div>
-      <Icon name="home" size="big" />
-      <Icon name="star" size="big" />
-      <Icon name="heart" size="big" />
-      <Icon name="ambulance" size="big" />
-      <Icon name="lightbulb" size="big" />
-
-      <Segment>
-        <Flag name='ae' />
-        <Flag name='france' />
-        <Flag name='myanmar' />
-      </Segment>
-    </div>
-    <div className="footer">
-      <a href="https://github.com/skydiver/nextjs-semantic/">
-        https://github.com/skydiver/nextjs-semantic/
-      </a>
-    </div>
-    <Home />
-  </StyledContainer>
+  <Home />
 );
 export default Index;

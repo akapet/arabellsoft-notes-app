@@ -1,10 +1,34 @@
-import styled from 'styled-components';
-import { Button, Icon, Segment, Flag } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Icon, Segment, Grid, Header, Modal } from 'semantic-ui-react';
+import CreateNote from './create-note';
 
-const Home = () => (
-  <div>
-    <h1>Hello</h1>    
-  </div>
-);
+function Home() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 500 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+            Note App
+          </Header>
+          <Segment placeholder>
+            <Header icon>
+              <Icon name='tasks' />
+              No notes yet. Create note to start.
+            </Header>
+            <Segment.Inline>
+              <Button primary onClick={() => setOpen(true)}>Create Note</Button>
+            </Segment.Inline>
+          </Segment>
+        </Grid.Column>
+      </Grid>
+      <CreateNote
+        open={open}
+        setOpen={setOpen}
+      />      
+    </>    
+  )
+}
 
 export default Home;

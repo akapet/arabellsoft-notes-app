@@ -52,3 +52,7 @@ Fix: Restart the server
 
 ## References
 Project was cloned from https://github.com/skydiver/nextjs-semantic/ 
+
+Rationales
+1. TypeScript was installed to check types
+2. prop-types module was added for checking property types
