@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Button, Icon, Segment, Flag } from 'semantic-ui-react';
+import Home from './home';
+
 
 const StyledContainer = styled.div`
   display: flex;
@@ -18,7 +20,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-const Home = () => (
+const Index = () => (
   <StyledContainer>
     <div>
       <h1>Notes App</h1>
@@ -45,6 +47,7 @@ const Home = () => (
         https://github.com/skydiver/nextjs-semantic/
       </a>
     </div>
+    <Home />
   </StyledContainer>
 );
-export default Home;
+export default Index;
