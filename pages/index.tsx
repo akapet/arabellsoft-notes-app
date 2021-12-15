@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Segment, Flag } from 'semantic-ui-react';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ const StyledContainer = styled.div`
 const Home = () => (
   <StyledContainer>
     <div>
-      <h1>Next.js + Fomantic-UI!</h1>
+      <h1>Notes App</h1>
     </div>
     <div>
       <Button primary>Primary</Button>
@@ -33,6 +33,12 @@ const Home = () => (
       <Icon name="heart" size="big" />
       <Icon name="ambulance" size="big" />
       <Icon name="lightbulb" size="big" />
+
+      <Segment>
+        <Flag name='ae' />
+        <Flag name='france' />
+        <Flag name='myanmar' />
+      </Segment>
     </div>
     <div className="footer">
       <a href="https://github.com/skydiver/nextjs-semantic/">
