@@ -9,18 +9,22 @@ function Home() {
 
   return (
     <>
-      <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 500 }}>
-          <Header as='h2' color='teal' textAlign='center'>
-            Note App
-          </Header>
-          <Segment basic>
-            <Notes notes={notes} />
-            <Segment.Inline>
-              <Button primary onClick={() => setOpen(true)}>Create Note</Button>
-            </Segment.Inline>
-          </Segment>
-        </Grid.Column>
+      <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
+        <Grid.Row>
+          <Grid.Column>
+            <Header as='h2' color='teal' textAlign='center'>
+              Note App
+            </Header>            
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row style={{maxWidth: 500}}>
+          <Notes notes={notes} />
+        </Grid.Row>
+        <Grid.Row textAlign='center'>
+          <Segment.Inline>
+            <Button primary onClick={() => setOpen(true)}>Create Note</Button>
+          </Segment.Inline>
+        </Grid.Row>
       </Grid>
       
       <CreateNote
@@ -31,8 +35,9 @@ function Home() {
     </>    
   )
 
-  function saveAndCloseCreateNote(note: string) {    
-    setNotes(oldNotes => [...oldNotes, note]);
+  function saveAndCloseCreateNote(note: string) {  
+    const newNotes = [...notes, note];  
+    setNotes(newNotes);
     setOpen(false);
   }
 }
