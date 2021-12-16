@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
+import { Form, Modal, TextArea } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { Note } from '../data/Note';
