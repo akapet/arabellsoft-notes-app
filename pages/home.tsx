@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Segment, Grid, Header } from 'semantic-ui-react';
 import * as R from 'ramda';
 import _ from 'ramda';
@@ -6,6 +6,7 @@ import { Note } from '../data/Note';
 import CreateNote from './create-note';
 import EditNote from './edit-note';
 import Notes from './notes';
+import CommonButton from '../CommonButton';
 
 const Mode = {
   list: 'LIST',
@@ -23,7 +24,7 @@ function Home() {
       <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column>
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as='h2' color='green' textAlign='center'>
               Note App
             </Header>            
           </Grid.Column>
@@ -35,7 +36,7 @@ function Home() {
         <Grid.Row textAlign='center'>
           {inListMode() &&
             <Segment.Inline>
-              <Button primary onClick={() => setOpen(true)}>Create Note</Button>
+              <CommonButton onClick={() => setOpen(true)} content="Create Note" color="green" />
             </Segment.Inline>
           }
         </Grid.Row>
