@@ -7,7 +7,7 @@ function Note(props) {
   const { note } = props
   
   return (
-    <Card fluid style={{ width: 500, height: 80 }}>
+    <Card fluid style={{ width: 500, height: 80, cursor: 'pointer' }}>
       <Card.Content>
         <Card.Header content={getTitle(note)} />
         <Card.Meta content={note} />

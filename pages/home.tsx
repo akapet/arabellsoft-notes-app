@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Segment, Grid, Header } from 'semantic-ui-react';
 import CreateNote from './create-note';
+import EditNote from './edit-note';
 import Notes from './notes';
+
+const Mode = {
+  list: 'LIST',
+  edit: 'EDIT'
+}
 
 function Home() {
   const [open, setOpen] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [mode, setMode] = useState(Mode.list);
+  const [noteId, setNoteId] = useState("");
 
   return (
     <>
@@ -18,7 +26,7 @@ function Home() {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row style={{maxWidth: 500}}>
-          <Notes notes={notes} />
+          { renderMode(mode, notes, noteId) }
         </Grid.Row>
         <Grid.Row textAlign='center'>
           <Segment.Inline>
@@ -34,6 +42,15 @@ function Home() {
       />      
     </>    
   )
+
+  function renderMode(mode, notes, noteId) {
+    switch (mode) {
+      case Mode.edit:
+        return <EditNote note={noteId} />
+      default:
+        return <Notes notes={notes} />;
+    }
+  }
 
   function saveAndCloseCreateNote(note: string) {  
     const newNotes = [...notes, note];  
