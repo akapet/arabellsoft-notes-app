@@ -37,9 +37,9 @@ function EditNote(props) {
 }
 
 EditNote.propTypes = {
-  note: PropTypes.string,
-  handleDoneEditing: PropTypes.func,
-  handleDeleteNote: PropTypes.func,
+  note: PropTypes.string.isRequired,
+  handleDoneEditing: PropTypes.func.isRequired,
+  handleDeleteNote: PropTypes.func.isRequired,
 }
 
 export default EditNote;

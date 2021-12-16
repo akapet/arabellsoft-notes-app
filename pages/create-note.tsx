@@ -41,8 +41,8 @@ function CreateNote(props) {
 
 CreateNote.propTypes = {
   open: PropTypes.bool,
-  setOpen: PropTypes.func,
-  saveNote: PropTypes.func
+  setOpen: PropTypes.func.isRequired,
+  saveNote: PropTypes.func.isRequired
 }
 
 export default CreateNote;
