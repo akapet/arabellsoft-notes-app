@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <>
-      <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
+      <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column>
             <Header as='h2' color='teal' textAlign='center'>
