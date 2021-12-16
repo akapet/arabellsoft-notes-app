@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Segment, Grid, Header } from 'semantic-ui-react';
+import * as R from 'ramda';
+import _ from 'ramda';
+import { Note } from '../data/Note';
 import CreateNote from './create-note';
 import EditNote from './edit-note';
 import Notes from './notes';
@@ -11,9 +14,9 @@ const Mode = {
 
 function Home() {
   const [open, setOpen] = useState(false);
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([] as Note[]);
   const [mode, setMode] = useState(Mode.list);
-  const [noteId, setNoteId] = useState("");
+  const [currentNote, setCurrentNote] = useState(null);
 
   return (
     <>
@@ -26,12 +29,15 @@ function Home() {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row style={{maxWidth: 500}}>
-          { renderMode(mode, notes, noteId) }
+          {renderMode(mode, notes, handleEditNote) }
         </Grid.Row>
+        
         <Grid.Row textAlign='center'>
-          <Segment.Inline>
-            <Button primary onClick={() => setOpen(true)}>Create Note</Button>
-          </Segment.Inline>
+          {inListMode() &&
+            <Segment.Inline>
+              <Button primary onClick={() => setOpen(true)}>Create Note</Button>
+            </Segment.Inline>
+          }
         </Grid.Row>
       </Grid>
       
@@ -39,23 +45,79 @@ function Home() {
         open={open}
         setOpen={setOpen}
         saveNote={saveAndCloseCreateNote}
-      />      
+      />           
     </>    
   )
 
-  function renderMode(mode, notes, noteId) {
+  function renderMode(mode: string, notes: Note[], handleEditNote: { (note: Note): void; (...args: any[]): any; }) {
     switch (mode) {
       case Mode.edit:
-        return <EditNote note={noteId} />
+        return (
+          <EditNote
+            note={currentNote}
+            handleDoneEditing={handleDoneEditing}
+            handleDeleteNote={handleDeleteNote}
+          />
+        );        
       default:
-        return <Notes notes={notes} />;
+        return (
+          <Notes
+            notes={notes}
+            handleEditNote={handleEditNote}
+          />
+        );
     }
   }
 
-  function saveAndCloseCreateNote(note: string) {  
-    const newNotes = [...notes, note];  
+  function inListMode() {
+    return mode !== Mode.edit;
+  }
+
+  function handleEditNote(note: Note) {
+    setCurrentNote(note);
+    setMode(Mode.edit);
+  }
+
+  function saveAndCloseCreateNote(note: Note) {  
+    const newNotes = R.append(note, notes);  
     setNotes(newNotes);
     setOpen(false);
+  }
+
+  function handleDoneEditing(note: Note) { 
+    if (!note) {
+      // TODO: Perhaps show error or log.
+      return;
+    }
+
+    const index = R.findIndex(R.propEq('id', note.id))(notes);
+
+    if (index === -1) {
+      // TODO: Perhaps show error or log.
+      return;
+    }
+
+    const updatedNotes = R.update(index, note, notes); 
+    setNotes(updatedNotes);
+    setMode(Mode.list);
+  }
+
+  function handleDeleteNote(note: Note) {
+    if (!note) {
+      // TODO: Perhaps show error or log.
+      return;
+    }
+
+    const index = R.findIndex(R.propEq('id', note.id))(notes);
+
+    if (index === -1) {
+      // TODO: Perhaps show error or log.
+      return;
+    }
+
+    const updatedNotes = R.remove(index, 1, notes);
+    setNotes(updatedNotes);
+    setMode(Mode.list);
   }
 }
 

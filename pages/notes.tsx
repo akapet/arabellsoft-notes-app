@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { SemanticICONS } from 'semantic-ui-react/dist/commonjs/generic';
 import Note from './note';
+import { Note as NoteData } from '../data/Note';
 
 function Notes(props) {
-  const { notes } = props
+  const { notes, handleEditNote } = props
   
   return (
     <>
@@ -21,9 +22,9 @@ function Notes(props) {
 
       <Card.Group>
         {
-          _.map(notes, (note: string) => {
+          _.map(notes, (note: NoteData) => {
             return (
-              <Note note={note} />
+              <Note note={note} key={note.id} handleEditNote={handleEditNote} />
             );
           })
         }
@@ -33,7 +34,10 @@ function Notes(props) {
 }
 
 Notes.propTypes = {
-  notes: PropTypes.array,
+  notes: PropTypes.arrayOf(
+    PropTypes.instanceOf(NoteData)
+  ),
+  handleEditNote: PropTypes.func.isRequired
 }
 
 export default Notes;

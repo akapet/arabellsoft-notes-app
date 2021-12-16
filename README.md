@@ -53,6 +53,8 @@ Fix: Restart the server
 ## References
 Project was cloned from https://github.com/skydiver/nextjs-semantic/ 
 
-Rationales
+## Arabellsoft Design Rationales
 1. TypeScript was installed to check types
 2. prop-types module was added for checking property types
+3. To avoid mutation of data, Ramda module (https://ramdajs.com/) was used.
+4. Function inListMode() was extracted out for easier readability

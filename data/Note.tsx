@@ -1,11 +1,11 @@
 export class Note {
     id: string;
-    note: string;
+    content: string;
     whenCreated: string;
 
-    constructor(id: string, note: string, whenCreated: string) {
+    constructor(id: string, content: string, whenCreated: string) {
         this.id = id;
-        this.note = note;
+        this.content = content;
         this.whenCreated = whenCreated;
     }
 }

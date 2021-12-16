@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import { Note } from '../data/Note';
+import moment from 'moment';
 
 function CreateNote(props) {
   const { open, setOpen, saveNote } = props;
@@ -27,7 +30,7 @@ function CreateNote(props) {
         <Button negative onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button positive onClick={() => saveNote(note)}>
+        <Button positive onClick={() => createNote()}>
           Create
         </Button>
       </Modal.Actions>
@@ -36,6 +39,11 @@ function CreateNote(props) {
 
   function handleTextChange(e, { value }) {
     setNote(value);
+  }
+
+  function createNote() {
+    const newNote = new Note(uuidv4(), note, moment().format());
+    saveNote(newNote);
   }
 }
 
