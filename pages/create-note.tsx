@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { Note } from '../data/Note';
 import moment from 'moment';
+import CommonButton from '../CommonButton';
 
 function CreateNote(props) {
   const { open, setOpen, saveNote } = props;
@@ -15,6 +16,7 @@ function CreateNote(props) {
       open={open}
       onClose={() => setOpen(false)}
       size={'tiny'}
+      centered={false}
     >
       <Modal.Header>Create Note</Modal.Header>
       <Modal.Content>
@@ -23,16 +25,13 @@ function CreateNote(props) {
             control={TextArea}
             placeholder='Type your note here...'
             onChange={handleTextChange}
+            style={{ minHeight: 100, border: 'none', backgroundColor: 'transparent', resize: 'none', outline: 'none' }}
           />
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button negative onClick={() => setOpen(false)}>
-          Cancel
-        </Button>
-        <Button positive onClick={() => createNote()}>
-          Create
-        </Button>
+        <CommonButton onClick={() => setOpen(false)} content="Cancel" negative={true} />   
+        <CommonButton onClick={() => createNote()} content="Create" positive={true} disabled={!!!note}/>         
       </Modal.Actions>
     </Modal>    
   )
