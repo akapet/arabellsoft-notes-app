@@ -1,8 +1,7 @@
 import React from 'react';
-import { Card, Header, Icon, Segment } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { SemanticICONS } from 'semantic-ui-react/dist/commonjs/generic';
 
 function Note(props) {
   const { note } = props
