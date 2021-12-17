@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Note } from '../data/Note';
 import moment from 'moment';
 import CommonButton from '../CommonButton';
+import { CreateNoteButtonText, CancelButtonText, CreateButtonText, TextAreaPlaceholder } from '../Constants';
 
 function CreateNote(props) {
   const { open, setOpen, saveNote } = props;
@@ -18,20 +19,20 @@ function CreateNote(props) {
       size={'tiny'}
       centered={false}
     >
-      <Modal.Header>Create Note</Modal.Header>
+      <Modal.Header>{CreateNoteButtonText}</Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Field
             control={TextArea}
-            placeholder='Type your note here...'
+            placeholder={TextAreaPlaceholder}
             onChange={handleTextChange}
             style={{ minHeight: 100, border: 'none', backgroundColor: 'transparent', resize: 'none', outline: 'none' }}
           />
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <CommonButton onClick={() => setOpen(false)} content="Cancel" negative={true} />   
-        <CommonButton onClick={() => createNote()} content="Create" positive={true} disabled={!!!note}/>         
+        <CommonButton onClick={() => setOpen(false)} content={CancelButtonText} negative={true} />   
+        <CommonButton onClick={() => createNote()} content={CreateButtonText} positive={true} disabled={!!!note}/>         
       </Modal.Actions>
     </Modal>    
   )

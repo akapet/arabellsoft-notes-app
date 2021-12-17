@@ -8,12 +8,12 @@ import CreateNote from './create-note';
 import EditNote from './edit-note';
 import Notes from './notes';
 import CommonButton from '../CommonButton';
+import { ArabellsoftPostfix, ArabellsoftPrefix, ClickToEditANoteText, CreateNoteButtonText, ID, NOTES } from '../Constants';
 
 const Mode = {
   list: 'LIST',
   edit: 'EDIT'
 }
-const NOTES = 'notes';
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -32,7 +32,7 @@ function Home() {
   
   return (
     <>
-      <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
+      <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
         <Grid.Row>
           <Grid.Column>
             <Header as='h2' color='green' textAlign='center'>
@@ -44,7 +44,7 @@ function Home() {
         <Grid.Row textAlign='center'>
           {inListMode() &&
             <Segment.Inline>
-              <CommonButton onClick={() => setOpen(true)} content="Create Note" color="green" />
+              <CommonButton onClick={() => setOpen(true)} content={CreateNoteButtonText} color="green" />
             </Segment.Inline>
           }
         </Grid.Row>
@@ -55,13 +55,13 @@ function Home() {
         
         <Grid.Row textAlign='center'>
           {!R.isEmpty(notes) &&
-            <span style={{ color: 'grey' }}>Click to edit a note.</span>
+            <span style={{ color: 'grey' }}>{ClickToEditANoteText}</span>
           }
         </Grid.Row>        
 
         <Grid.Row textAlign='center'>
-          With <Icon name={"heart" as SemanticICONS} color="red" /> 
-          <span>from Arabellsoft</span>
+          {ArabellsoftPrefix} <Icon name={"heart" as SemanticICONS} color="red" /> 
+          <span>{ArabellsoftPostfix}</span>
         </Grid.Row>
       </Grid>
       
@@ -121,7 +121,7 @@ function Home() {
       return;
     }
 
-    const index = R.findIndex(R.propEq('id', note.id))(notes);
+    const index = R.findIndex(R.propEq(ID, note.id))(notes);
 
     if (index === -1) {
       // TODO: Perhaps show error or log.
@@ -140,7 +140,7 @@ function Home() {
       return;
     }
 
-    const index = R.findIndex(R.propEq('id', note.id))(notes);
+    const index = R.findIndex(R.propEq(ID, note.id))(notes);
 
     if (index === -1) {
       // TODO: Perhaps show error or log.

@@ -58,3 +58,4 @@ Project was cloned from https://github.com/skydiver/nextjs-semantic/
 2. prop-types module was added for checking property types
 3. To avoid mutation of data, Ramda module (https://ramdajs.com/) was used.
 4. Function inListMode() was extracted out for easier readability
+5. Buttons use reusable component called CommonButton

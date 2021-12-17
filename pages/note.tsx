@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import { Note as NoteData } from '../data/Note';
+import { CreatedPrefix } from '../Constants';
 
 function Note(props) {
   const { handleEditNote, note } = props
@@ -43,7 +44,7 @@ function Note(props) {
       return "";
     }   
 
-    return `Created ${moment(note.whenCreated).fromNow()}`;
+    return `${CreatedPrefix} ${moment(note.whenCreated).fromNow()}`;
   }
 }
 

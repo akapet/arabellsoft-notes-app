@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Card, Form, TextArea } from 'semantic-ui-react';
+import { Card, Form, TextArea } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Note } from '../data/Note';
+import CommonButton from '../CommonButton';
+import { DeleteButtonText, DoneButtonText } from '../Constants';
 
 function EditNote(props) {
   const { note } = props;
@@ -20,13 +22,9 @@ function EditNote(props) {
         </Form>
       </Card.Content>
       <Card.Content extra>
-        <div className='ui two buttons'>
-          <Button basic color='green' onClick={handleDone}>
-            Done
-          </Button>
-          <Button basic color='red' onClick={handleDelete}>
-            Delete
-          </Button>
+        <div className='ui two buttons'>          
+          <CommonButton onClick={handleDone} content={DoneButtonText} color={"green"} />
+          <CommonButton onClick={handleDelete} content={DeleteButtonText} color={"red"} />         
         </div>
       </Card.Content>
     </Card>   

@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { SemanticICONS } from 'semantic-ui-react/dist/commonjs/generic';
 import Note from './note';
 import { Note as NoteData } from '../data/Note';
+import { EmptyNotesText } from '../Constants';
 
 function Notes(props) {
   const { notes, handleEditNote } = props
@@ -15,7 +16,7 @@ function Notes(props) {
         <Segment placeholder>
           <Header icon>
             <Icon name={'sticky note outline' as SemanticICONS} />
-            No notes yet. Create note to start.
+            {EmptyNotesText}
           </Header>
         </Segment>
       }
