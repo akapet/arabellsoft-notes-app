@@ -8,7 +8,7 @@ const IAmNoteToBeEdited = "IAmNoteToBeEdited";
 const IAmNoteEdited = IAmNoteToBeEdited + "ILoveCleanCodeAlways";
 
 test(`note is actually edited upon edit`, async () => {
-    const { debug } = render(<Home />);
+    render(<Home />);
 
     fireEvent.click(screen.getByRole('button', {
         name: /Create Note/i,
