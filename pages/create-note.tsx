@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Note } from '../data/Note';
 import moment from 'moment';
 import CommonButton from '../CommonButton';
-import { CreateNoteButtonText, CancelButtonText, CreateButtonText, TextAreaPlaceholder, ModalCreateNoteTestId } from '../Constants';
+import { CreateNoteButtonText, CancelButtonText, CreateButtonText, TextAreaPlaceholder, ModalCreateNoteTestId, CreateNoteTextAreaTestId } from '../Constants';
 
 function CreateNote(props) {
   const { open, setOpen, saveNote } = props;
@@ -27,7 +27,7 @@ function CreateNote(props) {
             placeholder={TextAreaPlaceholder}
             onChange={handleTextChange}
             style={{ minHeight: 100, border: 'none', backgroundColor: 'transparent', resize: 'none', outline: 'none' }}
-            data-testid={"create-note-textarea"}
+            data-testid={CreateNoteTextAreaTestId}
           />
         </Form>
       </Modal.Content>

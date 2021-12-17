@@ -2,11 +2,12 @@ import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../pages/index';
-import { ModalCreateNoteTestId } from '../Constants';
+import { CreateNoteTextAreaTestId, ModalCreateNoteTestId } from '../Constants';
 
 const IAmNoteToBeEdited = "IAmNoteToBeEdited";
+const IAmNoteEdited = IAmNoteToBeEdited + "ILoveCleanCodeAlways";
 
-test(`note is added to list upon note created`, async () => {
+test(`note is actually edited upon edit`, async () => {
     render(<Home />);
 
     fireEvent.click(screen.getByRole('button', {
@@ -17,7 +18,7 @@ test(`note is added to list upon note created`, async () => {
         ModalCreateNoteTestId
     ));
 
-    const textArea = screen.getByTestId("create-note-textarea");
+    const textArea = screen.getByTestId(CreateNoteTextAreaTestId);
     fireEvent.change(textArea, { target: { value: IAmNoteToBeEdited } });
 
     expect(screen.getByTestId(ModalCreateNoteTestId)).toBeEnabled();
@@ -31,6 +32,9 @@ test(`note is added to list upon note created`, async () => {
     );
 
     expect(_.size(newNote)).toBeGreaterThan(1);
+
+    const firstIndex = 0;
+    fireEvent.click(screen.getAllByText(IAmNoteToBeEdited)[firstIndex]);
 })
 
 

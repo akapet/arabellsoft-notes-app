@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../pages/index';
-import { ModalCreateNoteTestId } from '../Constants';
+import { CreateNoteTextAreaTestId, ModalCreateNoteTestId } from '../Constants';
 
 const IAmSampleNote = "IAmSampleNote";
 
@@ -31,7 +31,7 @@ test(`create note modal enables the "Create" button upon text entered`, async ()
         ModalCreateNoteTestId
     ));
 
-    const textArea = screen.getByTestId("create-note-textarea");
+    const textArea = screen.getByTestId(CreateNoteTextAreaTestId);
     fireEvent.change(textArea, { target: { value: IAmSampleNote } });
 
     expect(screen.getByTestId(ModalCreateNoteTestId)).toBeEnabled()
@@ -48,7 +48,7 @@ test(`note is added to list upon note created`, async () => {
         ModalCreateNoteTestId
     ));
 
-    const textArea = screen.getByTestId("create-note-textarea");
+    const textArea = screen.getByTestId(CreateNoteTextAreaTestId);
     fireEvent.change(textArea, { target: { value: IAmSampleNote } });
 
     expect(screen.getByTestId(ModalCreateNoteTestId)).toBeEnabled();

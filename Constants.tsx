@@ -22,3 +22,5 @@ export const EditNoteDoneButtonTestId = "edit-note-done-button-test-id";
 export const EditNoteDeleteButtonTestId = "edit-note-delete-button-test-id";
 
 export const ModalCreateNoteTestId = 'modal-create-note';
+
+export const CreateNoteTextAreaTestId = 'create-note-textarea-test-id';
