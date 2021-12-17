@@ -15,6 +15,9 @@
 1. Module not found: Can't resolve './home'
 Fix: Restart the server
 
+## Run Test
+1. `npm run test`
+
 ## Semantic UI React
 * Installed and used by default.
 * Using React components is recommended.

@@ -2,13 +2,13 @@ import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../pages/index';
-import { CreateNoteTextAreaTestId, ModalCreateNoteTestId } from '../Constants';
+import { CreateNoteTextAreaTestId, EditNoteDoneButtonTestId, EditNoteTextAreaTestId, ModalCreateNoteTestId } from '../Constants';
 
 const IAmNoteToBeEdited = "IAmNoteToBeEdited";
 const IAmNoteEdited = IAmNoteToBeEdited + "ILoveCleanCodeAlways";
 
 test(`note is actually edited upon edit`, async () => {
-    render(<Home />);
+    const { debug } = render(<Home />);
 
     fireEvent.click(screen.getByRole('button', {
         name: /Create Note/i,
@@ -35,6 +35,21 @@ test(`note is actually edited upon edit`, async () => {
 
     const firstIndex = 0;
     fireEvent.click(screen.getAllByText(IAmNoteToBeEdited)[firstIndex]);
+
+    const editTextArea = screen.getByTestId(EditNoteTextAreaTestId);
+    fireEvent.change(editTextArea, { target: { value: IAmNoteEdited } });
+
+    fireEvent.click(screen.getByTestId(EditNoteDoneButtonTestId));
+
+    await waitFor(() => screen.getAllByText(
+        IAmNoteEdited
+    ));
+    
+    const updatedNotes = screen.getAllByText(
+        IAmNoteEdited
+    );
+
+    expect(_.size(updatedNotes)).toBeGreaterThan(1);
 })
 
 

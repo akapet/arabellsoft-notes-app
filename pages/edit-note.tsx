@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Note } from '../data/Note';
 import CommonButton from '../CommonButton';
-import { DeleteButtonText, DoneButtonText, EditNoteDeleteButtonTestId, EditNoteDoneButtonTestId } from '../Constants';
+import { DeleteButtonText, DoneButtonText, EditNoteDeleteButtonTestId, EditNoteDoneButtonTestId, EditNoteTextAreaTestId } from '../Constants';
 
 function EditNote(props) {
   const { note } = props;
@@ -18,6 +18,7 @@ function EditNote(props) {
             control={TextArea}
             onChange={handleTextChange}
             value={editedNote}
+            data-testid={EditNoteTextAreaTestId}
           />
         </Form>
       </Card.Content>
