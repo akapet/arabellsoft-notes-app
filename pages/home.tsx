@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Segment, Grid, Header } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Segment, Grid, Header, Icon, SemanticICONS } from 'semantic-ui-react';
 import * as R from 'ramda';
-import _ from 'ramda';
+import { reactLocalStorage } from 'reactjs-localstorage';
 import { Note } from '../data/Note';
 import CreateNote from './create-note';
 import EditNote from './edit-note';
@@ -12,6 +12,7 @@ const Mode = {
   list: 'LIST',
   edit: 'EDIT'
 }
+const NOTES = 'notes';
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,15 @@ function Home() {
   const [mode, setMode] = useState(Mode.list);
   const [currentNote, setCurrentNote] = useState(null);
 
+  useEffect(() => {    
+    const localNotes = reactLocalStorage.get(NOTES);   
+
+    if (!!localNotes) {
+      const localNotesObject: Note[] = JSON.parse(localNotes);      
+      setNotes(localNotesObject as Note[]);
+    } 
+  }, []);
+  
   return (
     <>
       <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
@@ -29,9 +39,6 @@ function Home() {
             </Header>            
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row style={{maxWidth: 500}}>
-          {renderMode(mode, notes, handleEditNote) }
-        </Grid.Row>
         
         <Grid.Row textAlign='center'>
           {inListMode() &&
@@ -39,6 +46,21 @@ function Home() {
               <CommonButton onClick={() => setOpen(true)} content="Create Note" color="green" />
             </Segment.Inline>
           }
+        </Grid.Row>
+
+        <Grid.Row style={{maxWidth: 500}}>
+          {renderMode(mode, notes, handleEditNote) }
+        </Grid.Row>
+        
+        <Grid.Row textAlign='center'>
+          {!R.isEmpty(notes) &&
+            <span style={{ color: 'grey' }}>Click to edit a note.</span>
+          }
+        </Grid.Row>        
+
+        <Grid.Row textAlign='center'>
+          With <Icon name={"heart" as SemanticICONS} color="red" /> 
+          <span>from Arabellsoft</span>
         </Grid.Row>
       </Grid>
       
@@ -82,7 +104,13 @@ function Home() {
   function saveAndCloseCreateNote(note: Note) {  
     const newNotes = R.append(note, notes);  
     setNotes(newNotes);
+    saveNotesToLocalStorage();
     setOpen(false);
+  }
+
+  function saveNotesToLocalStorage() {
+    const notesString = JSON.stringify(notes);
+    reactLocalStorage.set(NOTES, notesString);
   }
 
   function handleDoneEditing(note: Note) { 
@@ -100,6 +128,7 @@ function Home() {
 
     const updatedNotes = R.update(index, note, notes); 
     setNotes(updatedNotes);
+    saveNotesToLocalStorage();
     setMode(Mode.list);
   }
 
@@ -118,6 +147,7 @@ function Home() {
 
     const updatedNotes = R.remove(index, 1, notes);
     setNotes(updatedNotes);
+    saveNotesToLocalStorage();
     setMode(Mode.list);
   }
 }

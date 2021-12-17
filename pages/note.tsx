@@ -8,7 +8,7 @@ function Note(props) {
   const { note, handleEditNote } = props
   
   return (
-    <Card fluid style={{ width: 500, height: 80, cursor: 'pointer' }} onClick={() => handleEditNote(note)}>
+    <Card fluid style={{ width: 500, height: 80, cursor: 'pointer', margin: '0.01em' }} onClick={() => handleEditNote(note)}>
       <Card.Content>
         <Card.Header content={getTitle(note)} />
         <Card.Meta content={note.content} />
