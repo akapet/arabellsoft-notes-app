@@ -49,7 +49,7 @@ function Note(props) {
 }
 
 Note.propTypes = {
-  note: PropTypes.instanceOf(NoteData).isRequired,
+  note: PropTypes.object.isRequired,
   handleEditNote: PropTypes.func.isRequired
 }
 

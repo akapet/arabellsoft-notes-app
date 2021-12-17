@@ -35,9 +35,7 @@ function Notes(props) {
 }
 
 Notes.propTypes = {
-  notes: PropTypes.arrayOf(
-    PropTypes.instanceOf(NoteData)
-  ),
+  notes: PropTypes.array,
   handleEditNote: PropTypes.func.isRequired
 }
 
