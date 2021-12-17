@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Segment, Grid, Header, Icon, SemanticICONS } from 'semantic-ui-react';
 import * as R from 'ramda';
 import { reactLocalStorage } from 'reactjs-localstorage';
+import useState from 'react-usestateref';
 import { Note } from '../data/Note';
 import CreateNote from './create-note';
 import EditNote from './edit-note';
@@ -16,7 +17,7 @@ const NOTES = 'notes';
 
 function Home() {
   const [open, setOpen] = useState(false);
-  const [notes, setNotes] = useState([] as Note[]);
+  const [notes, setNotes, notesRef] = useState([] as Note[]);
   const [mode, setMode] = useState(Mode.list);
   const [currentNote, setCurrentNote] = useState(null);
 
@@ -109,7 +110,8 @@ function Home() {
   }
 
   function saveNotesToLocalStorage() {
-    const notesString = JSON.stringify(notes);
+    const notesString = JSON.stringify(notesRef.current);
+    
     reactLocalStorage.set(NOTES, notesString);
   }
 
