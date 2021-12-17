@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Note } from '../data/Note';
 import CommonButton from '../CommonButton';
-import { DeleteButtonText, DoneButtonText } from '../Constants';
+import { DeleteButtonText, DoneButtonText, EditNoteDeleteButtonTestId, EditNoteDoneButtonTestId } from '../Constants';
 
 function EditNote(props) {
   const { note } = props;
@@ -23,8 +23,8 @@ function EditNote(props) {
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>          
-          <CommonButton onClick={handleDone} content={DoneButtonText} color={"green"} />
-          <CommonButton onClick={handleDelete} content={DeleteButtonText} color={"red"} />         
+          <CommonButton onClick={handleDone} content={DoneButtonText} color={"green"} dataTestId={EditNoteDoneButtonTestId} />
+          <CommonButton onClick={handleDelete} content={DeleteButtonText} color={"red"} dataTestId={EditNoteDeleteButtonTestId} />         
         </div>
       </Card.Content>
     </Card>   

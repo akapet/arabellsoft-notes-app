@@ -17,3 +17,8 @@ export const ArabellsoftPostfix = "from Arabellsoft Inc.";
 
 export const CreatedPrefix = "Created";
 export const EmptyNotesText = "No notes yet. Create note to start.";
+
+export const EditNoteDoneButtonTestId = "edit-note-done-button-test-id";
+export const EditNoteDeleteButtonTestId = "edit-note-delete-button-test-id";
+
+export const ModalCreateNote = 'modal-create-note-test-id';
