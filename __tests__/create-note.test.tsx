@@ -2,8 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Home from '../pages/index';
+import { ModalCreateNoteTestId } from '../Constants';
 
-const ModalCreateNote = 'modal-create-note';
 const IAmSampleNote = "IAmSampleNote";
 
 test(`create note modal shows "Create" button as disabled upon load`, async () => {
@@ -14,10 +14,10 @@ test(`create note modal shows "Create" button as disabled upon load`, async () =
     }));
     
     await waitFor(() => screen.getByTestId(
-        ModalCreateNote
+        ModalCreateNoteTestId
     ));
 
-    expect(screen.getByTestId(ModalCreateNote)).toBeDisabled()
+    expect(screen.getByTestId(ModalCreateNoteTestId)).toBeDisabled()
 })
 
 test(`create note modal enables the "Create" button upon text entered`, async () => {
@@ -28,13 +28,13 @@ test(`create note modal enables the "Create" button upon text entered`, async ()
     }));
 
     await waitFor(() => screen.getByTestId(
-        ModalCreateNote
+        ModalCreateNoteTestId
     ));
 
     const textArea = screen.getByTestId("create-note-textarea");
     fireEvent.change(textArea, { target: { value: IAmSampleNote } });
 
-    expect(screen.getByTestId(ModalCreateNote)).toBeEnabled()
+    expect(screen.getByTestId(ModalCreateNoteTestId)).toBeEnabled()
 })
 
 test(`note is added to list upon note created`, async () => {
@@ -45,16 +45,16 @@ test(`note is added to list upon note created`, async () => {
     }));
 
     await waitFor(() => screen.getByTestId(
-        ModalCreateNote
+        ModalCreateNoteTestId
     ));
 
     const textArea = screen.getByTestId("create-note-textarea");
     fireEvent.change(textArea, { target: { value: IAmSampleNote } });
 
-    expect(screen.getByTestId(ModalCreateNote)).toBeEnabled();
+    expect(screen.getByTestId(ModalCreateNoteTestId)).toBeEnabled();
 
     fireEvent.click(screen.getByTestId(
-        ModalCreateNote
+        ModalCreateNoteTestId
     ));
 
     const newNote = screen.getAllByText(

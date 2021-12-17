@@ -21,4 +21,4 @@ export const EmptyNotesText = "No notes yet. Create note to start.";
 export const EditNoteDoneButtonTestId = "edit-note-done-button-test-id";
 export const EditNoteDeleteButtonTestId = "edit-note-delete-button-test-id";
 
-export const ModalCreateNoteTestId = 'modal-create-note-test-id';
+export const ModalCreateNoteTestId = 'modal-create-note';
