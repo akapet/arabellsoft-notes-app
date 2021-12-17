@@ -13,7 +13,7 @@
     "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "npm test"
+    "test": "jest --watch"
   },
   "dependencies": {
     "@types/jest": "^27.0.3",
@@ -35,7 +35,10 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.5",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -44,7 +47,13 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "fomantic-ui": "^2.8.8",
     "inquirer": "^8.2.0",
+    "jest": "^27.4.5",
     "prettier": "^2.4.1",
+    "react-test-renderer": "^17.0.2",
     "url-loader": "^4.1.1"
-  }
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
 }
