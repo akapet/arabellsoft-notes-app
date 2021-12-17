@@ -38,7 +38,7 @@ test(`create note modal enables the "Create" button upon text entered`, async ()
 })
 
 test(`note is added to list upon note created`, async () => {
-    const {debug} = render(<Home />);
+    render(<Home />);
 
     fireEvent.click(screen.getByRole('button', {
         name: /Create Note/i,

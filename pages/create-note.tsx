@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Note } from '../data/Note';
 import moment from 'moment';
 import CommonButton from '../CommonButton';
-import { CreateNoteButtonText, CancelButtonText, CreateButtonText, TextAreaPlaceholder } from '../Constants';
+import { CreateNoteButtonText, CancelButtonText, CreateButtonText, TextAreaPlaceholder, ModalCreateNoteTestId } from '../Constants';
 
 function CreateNote(props) {
   const { open, setOpen, saveNote } = props;
@@ -43,7 +43,7 @@ function CreateNote(props) {
           content={CreateButtonText} 
           positive={true} 
           disabled={!!!note}
-          dataTestId="modal-create-note"
+          dataTestId={ModalCreateNoteTestId}
         />         
       </Modal.Actions>
     </Modal>    
