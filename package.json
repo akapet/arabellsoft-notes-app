@@ -1,8 +1,8 @@
 {
-  "name": "nextjs-semantic",
-  "description": "Next.js + Fomantic-UI + Styled Components",
+  "name": "arabellsoft-notes-app",
+  "description": "Notes App",
   "version": "5.1.0",
-  "author": "Martín M.",
+  "author": "Peter A.",
   "license": "MIT",
   "scripts": {
     "dev": "next",
@@ -12,7 +12,8 @@
     "semantic:build": "cd .semantic && gulp build-css build-assets",
     "semantic:watch": "cd .semantic && npm run semantic:build && gulp watch",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "npm test"
   },
   "dependencies": {
     "@types/jest": "^27.0.3",
