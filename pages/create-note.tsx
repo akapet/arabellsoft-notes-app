@@ -27,12 +27,24 @@ function CreateNote(props) {
             placeholder={TextAreaPlaceholder}
             onChange={handleTextChange}
             style={{ minHeight: 100, border: 'none', backgroundColor: 'transparent', resize: 'none', outline: 'none' }}
+            data-testid={"create-note-textarea"}
           />
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <CommonButton onClick={() => setOpen(false)} content={CancelButtonText} negative={true} />   
-        <CommonButton onClick={() => createNote()} content={CreateButtonText} positive={true} disabled={!!!note}/>         
+        <CommonButton 
+          onClick={() => setOpen(false)} 
+          content={CancelButtonText} 
+          negative={true}
+          dataTestId="modal-cancel-note"
+        />   
+        <CommonButton 
+          onClick={() => createNote()} 
+          content={CreateButtonText} 
+          positive={true} 
+          disabled={!!!note}
+          dataTestId="modal-create-note"
+        />         
       </Modal.Actions>
     </Modal>    
   )

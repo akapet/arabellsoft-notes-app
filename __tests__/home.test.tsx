@@ -8,9 +8,9 @@ describe('Home', () => {
 
         const heading = screen.getByText(
             /Note App/i,
-        )
+        );
 
-        expect(heading).toBeInTheDocument()
+        expect(heading).toBeInTheDocument();
     })
 })
 
@@ -23,6 +23,6 @@ describe('Home', () => {
             }
         );
 
-        expect(createNote).toBeInTheDocument()
+        expect(createNote).toBeInTheDocument();
     })
 })

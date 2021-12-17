@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 function CommonButton(props) {
-    const { primary, onClick, color, content, positive, negative, disabled } = props;
+    const { primary, onClick, color, content, positive, negative, disabled, dataTestId } = props;
 
     return (
         <Button 
@@ -14,6 +14,7 @@ function CommonButton(props) {
             positive={positive}
             negative={negative}
             disabled={disabled}
+            data-testid={dataTestId}
         >
             {content}
         </Button>
@@ -28,6 +29,7 @@ CommonButton.propTypes = {
     positive: PropTypes.bool,
     negative: PropTypes.bool,
     disabled: PropTypes.bool,
+    dataTestId: PropTypes.string,
 }
 
 export default CommonButton;
